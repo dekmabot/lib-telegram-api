@@ -26,7 +26,8 @@ composer:
             "dekmabot/lib-telegram-api": "dev-master"
         }
     }
-    ```
+```
+
 
 Documentation
 -------------
