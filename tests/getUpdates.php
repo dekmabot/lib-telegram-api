@@ -12,9 +12,9 @@ require_once( '../TelegramAPI/autoload.php' );
 
 $telegram_api = new \TelegramAPI( $token );
 
-$messages = $telegram_api->methods->getUpdates->execute();
+$updates = $telegram_api->methods->getUpdates->execute();
 
 print( '<pre>' );
-print_r( $messages );
+print_r( $updates );
 exit();
 

@@ -4,7 +4,7 @@ namespace TelegramAPI;
 class Methods_Method_GetUpdates extends Methods_Method
 {
 	/**
-	 * @return View_Message[]
+	 * @return View_Update[]
 	 */
 	public function execute()
 	{

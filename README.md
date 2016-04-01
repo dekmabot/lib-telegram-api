@@ -36,7 +36,7 @@ $token = '<your bot token here>';
 require_once( '../TelegramAPI/autoload.php' );
 $telegram_api = new \TelegramAPI( $token );
 
-$messages = $telegram_api->methods->getUpdates->execute();
+$updates = $telegram_api->methods->getUpdates->execute();
 
 // Send a message to a chat
 
