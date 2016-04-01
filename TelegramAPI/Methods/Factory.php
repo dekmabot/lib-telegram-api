@@ -6,6 +6,7 @@ namespace TelegramAPI;
  * @package VkontakteAPI
  *
  * @property-read Methods_Method_GetMe $getMe
+ * @property-read Methods_Method_SendMessage $sendMessage
  */
 class Methods_Factory
 {

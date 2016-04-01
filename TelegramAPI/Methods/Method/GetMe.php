@@ -4,7 +4,10 @@ namespace TelegramAPI;
 class Methods_Method_GetMe extends Methods_Method
 {
 
-	public function getMe()
+	/**
+	 * @return View_User
+	 */
+	public function execute()
 	{
 		$response = $this->call();
 		if ( !$response->ok )
@@ -16,7 +19,7 @@ class Methods_Method_GetMe extends Methods_Method
 		return $user;
 	}
 
-	public function getMethodName()
+	protected function getMethodName()
 	{
 		return 'getMe';
 	}

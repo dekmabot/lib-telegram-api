@@ -25,7 +25,9 @@ abstract class Methods_Method
 		$this->settings = $factory->getSettings();
 	}
 
-	abstract public function getMethodName();
+	abstract public function execute();
+
+	abstract protected function getMethodName();
 
 	public function __get( $name )
 	{
