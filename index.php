@@ -5,4 +5,5 @@ Method tests:
 	<li><a href="/tests/forwardMessage.php">forwardMessage</a></li>
 	<li><a href="/tests/sendPhoto.php">sendPhoto</a></li>
 	<li><a href="/tests/getUpdates.php">getUpdates</a></li>
+	<li><a href="/tests/setWebhook.php">setWebhook</a></li>
 </ol>
