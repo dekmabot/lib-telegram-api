@@ -8,6 +8,7 @@ namespace TelegramAPI;
  * @property-read Methods_Method_GetMe $getMe
  * @property-read Methods_Method_SendMessage $sendMessage
  * @property-read Methods_Method_ForwardMessage $forwardMessage
+ * @property-read Methods_Method_SendPhoto $sendPhoto
  */
 class Methods_Factory
 {

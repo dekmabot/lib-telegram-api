@@ -63,7 +63,7 @@ class Methods_Method_ForwardMessage extends Methods_Method
 	 *
 	 * @return $this
 	 */
-	public function setDisableNotificationMode( $disable = false )
+	public function setDisableNotification( $disable = false )
 	{
 		$this->disable_notification = !!$disable;
 

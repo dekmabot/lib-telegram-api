@@ -8,17 +8,17 @@
 
 $token = '169619511:AAH3PXGWzAeFyAJwL8FKluckHyIveZGV-Ic';
 $chat_id = 160425973;
-$from_chat_id = 160425973;
-$message_id = 6;
+$file_path = __DIR__ . '/test_photo.jpg';
+$caption = 'Test photo';
 
 require_once( '../TelegramAPI/autoload.php' );
 
 $telegram_api = new \TelegramAPI( $token );
 
-$message = $telegram_api->methods->forwardMessage
+$message = $telegram_api->methods->sendPhoto
 	->setChatID( $chat_id )
-	->setFromChatID( $from_chat_id )
-	->setMessageID( $message_id )
+	->setPhotoByPath( $file_path )
+	->setCaption( $caption )
 	->execute();
 
 print( '<pre>' );

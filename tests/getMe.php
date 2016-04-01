@@ -11,7 +11,9 @@ $token = '169619511:AAH3PXGWzAeFyAJwL8FKluckHyIveZGV-Ic';
 require_once( '../TelegramAPI/autoload.php' );
 
 $telegram_api = new \TelegramAPI( $token );
-$user = $telegram_api->methods->getMe->execute();
+
+$user = $telegram_api->methods->getMe
+	->execute();
 
 print('<pre>');
 print_r( $user );

@@ -1,17 +1,19 @@
 <?php
 namespace TelegramAPI;
 
-class Methods_Method_SendMessage extends Methods_Method
+class Methods_Method_SendPhoto extends Methods_Method
 {
 	const MODE_HTML = 'HTML';
 	const MODE_MARKDOWN = 'Markdown';
 
 	private $chat_id;
-	private $text;
-	private $parse_mode = self::MODE_HTML;
-	private $disable_web_page_preview = false;
+	private $photo;
+	private $caption;
 	private $disable_notification = false;
 	private $reply_to_message_id;
+	private $reply_markup;
+
+	private $is_photo = false;
 
 	/**
 	 * @return View_Message
@@ -20,7 +22,7 @@ class Methods_Method_SendMessage extends Methods_Method
 	{
 		$this->validate();
 
-		$response = $this->call( $this->getParams() );
+		$response = $this->call( $this->getParams(), true );
 		if ( !$response->ok )
 			$this->showError( $response );
 
@@ -46,40 +48,42 @@ class Methods_Method_SendMessage extends Methods_Method
 	}
 
 	/**
-	 * @param string $text
+	 * @param string $absolute_filename_path
 	 *
 	 * @return $this
 	 */
-	public function setText( $text )
+	public function setPhotoByPath( $absolute_filename_path )
 	{
-		$this->text = $text;
+		$this->transport->addFile( 'photo', $absolute_filename_path );
+
+		$this->photo = array(
+			
+		);
+		$this->is_photo = true;
 
 		return $this;
 	}
 
 	/**
-	 * @param string $parse_mode
+	 * @param View_Photo $photo
 	 *
 	 * @return $this
 	 */
-	public function setParseMode( $parse_mode )
+	public function setPhotoByID( View_Photo $photo )
 	{
-		if ( $parse_mode !== self::MODE_HTML && $parse_mode !== self::MODE_MARKDOWN )
-			die( 'Wrong $parse_mode value' );
-
-		$this->parse_mode = $parse_mode;
+		/* TODO: реализовать */
 
 		return $this;
 	}
 
 	/**
-	 * @param bool $disable
+	 * @param string $caption
 	 *
 	 * @return $this
 	 */
-	public function setDisableLinkPreviewMode( $disable = false )
+	public function setCaption( $caption )
 	{
-		$this->disable_web_page_preview = !!$disable;
+		$this->caption = $caption;
 
 		return $this;
 	}
@@ -128,26 +132,25 @@ class Methods_Method_SendMessage extends Methods_Method
 	 */
 	protected function getMethodName()
 	{
-		return 'sendMessage';
+		return 'sendPhoto';
 	}
 
 	private function validate()
 	{
 		if ( empty( $this->chat_id ) )
 			die( 'set $chat_id before execute()' );
-		if ( empty( $this->text ) )
-			die( 'set $text before execute()' );
+		if ( !$this->is_photo )
+			die( 'set $photo before execute()' );
 	}
 
 	private function getParams()
 	{
 		return array (
-			'chat_id'                  => $this->chat_id,
-			'text'                     => $this->text,
-			'parse_mode'               => $this->parse_mode,
-			'disable_web_page_preview' => $this->disable_web_page_preview,
-			'disable_notification'     => $this->disable_notification,
-			'reply_to_message_id'      => $this->reply_to_message_id,
+			'chat_id'              => $this->chat_id,
+			'caption'              => $this->caption,
+			'disable_notification' => $this->disable_notification,
+			'reply_to_message_id'  => $this->reply_to_message_id,
+			'reply_markup'         => $this->reply_markup,
 		);
 	}
 
