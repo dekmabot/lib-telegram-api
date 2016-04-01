@@ -22,8 +22,7 @@ class Methods_Method_ForwardMessage extends Methods_Method
 		if ( !$response->ok )
 			$this->showError( $response );
 
-		$message = new View_Message();
-		$message->fromJson( $response->result );
+		$message = new View_Message( $response->result );
 
 		return $message;
 	}

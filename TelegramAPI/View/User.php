@@ -9,7 +9,7 @@ class View_User extends View_Abstract
 
 	public $is_bot = false;
 
-	public function fromJson( $data )
+	public function __construct( $data )
 	{
 		$this->id = $data->id;
 		$this->first_name = $data->first_name;

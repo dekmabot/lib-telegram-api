@@ -8,7 +8,7 @@ class View_Chat extends View_Abstract
 	public $last_name;
 	public $type;
 
-	public function fromJson( $data )
+	public function __construct( $data )
 	{
 		$this->id = $data->id;
 		$this->first_name = $data->first_name;

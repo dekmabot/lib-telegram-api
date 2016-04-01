@@ -11,11 +11,6 @@ class View_Response extends View_Abstract
 
 	public function __construct( $data )
 	{
-		$this->fromJson( $data );
-	}
-
-	public function fromJson( $data )
-	{
 		$this->ok = !!$data->ok;
 
 		if ( isset( $data->result ) )

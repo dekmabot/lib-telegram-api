@@ -13,8 +13,7 @@ class Methods_Method_GetMe extends Methods_Method
 		if ( !$response->ok )
 			$this->showError( $response );
 
-		$user = new View_User();
-		$user->fromJson( $response->result );
+		$user = new View_User( $response->result );
 
 		return $user;
 	}
