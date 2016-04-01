@@ -1,10 +1,6 @@
 README
 ======
 
-Сайт walkmap.ru
-----------------
-
-
 Installation
 ------------
 
