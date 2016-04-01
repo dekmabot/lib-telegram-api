@@ -8,9 +8,12 @@
 
 $token = '169619511:AAH3PXGWzAeFyAJwL8FKluckHyIveZGV-Ic';
 
-$telegram_api = new \TelegramAPI\TelegramAPI( $token );
-$user = $telegram_api->methods->getMe;
+require_once( '../TelegramAPI/autoload.php' );
+
+$telegram_api = new \TelegramAPI( $token );
+$user = $telegram_api->methods->getMe->getMe();
 
 print('<pre>');
 print_r( $user );
 exit();
+

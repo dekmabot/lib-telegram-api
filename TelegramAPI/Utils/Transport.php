@@ -29,7 +29,7 @@ class Utils_Transport
 
 		curl_close( $ch );
 
-		$data = json_decode( $body, true );
+		$data = json_decode( $body );
 
 		return $data;
 	}

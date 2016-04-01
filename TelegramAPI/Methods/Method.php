@@ -53,12 +53,14 @@ abstract class Methods_Method
 		$method = $this->getMethodName();
 		$query_string = $this->getQueryString( $method, $params );
 
-		$url = $this->url_prefix . $this->settings->access_token . '/' . $query_string;
+		$url = $this->url_prefix . $this->settings->access_token . $query_string;
 
 		if ( !$is_post )
 			$data = $this->transport->readJson( $url );
 		else
 			$data = $this->transport->writeJson( $url );
+
+		$response = new View_Response( $data );
 
 		return $response;
 	}

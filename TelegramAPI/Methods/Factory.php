@@ -14,7 +14,7 @@ class Methods_Factory
 
 	private $storage = array ();
 
-	public function __construct( TelegramAPI $init )
+	public function __construct( \TelegramAPI $init )
 	{
 		$this->settings = $init->settings;
 	}
@@ -23,10 +23,12 @@ class Methods_Factory
 	{
 		if ( !isset( $this->storage[$name] ) )
 		{
-			$class_name = '\\Methods_Method_' . ucfirst( $name ) . '';
+			$class_name = '\\TelegramAPI\\Methods_Method_' . ucfirst( $name ) . '';
+			error_log( PHP_EOL . '$class_name: ' . $class_name . PHP_EOL );
+
 			if ( class_exists( $class_name ) )
 			{
-				$this->storage[$name] = new $class_name();
+				$this->storage[$name] = new $class_name( $this );
 
 				return $this->storage[$name];
 			}
