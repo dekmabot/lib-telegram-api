@@ -24,10 +24,6 @@ class Methods_Method_SendMessage extends Methods_Method
 		if ( !$response->ok )
 			$this->showError( $response );
 
-		print('<pre>');
-		print_r( $response );
-		exit();
-
 		$message = new View_Message();
 		$message->fromJson( $response->result );
 
