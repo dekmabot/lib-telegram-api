@@ -41,10 +41,10 @@ $updates = $telegram_api->methods->getUpdates->execute();
 // Send a message to a chat
 
 $chat_id = '<chat id here>';
-$message = 'Hello, World!';
+$text = 'Hello, World!';
 
 $message = $telegram_api->methods->sendMessage
 	->setChatID( $chat_id )
-	->setText( $message )
+	->setText( $text )
 	->execute();
 ```
